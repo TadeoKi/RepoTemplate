@@ -11,13 +11,36 @@ namespace ClassLibrary
     /// <summary>
     /// Esta clase representa un tren muy básico.
     /// </summary>
+    
+    
     public class Train
     {
         /// <summary>
         /// Obtiene un valor que indica si las maquinas del tren han sido encendidas o no.
         /// </summary>
         /// <value><c>true</c> si las máquinas fueron encendidas, <c>false</c> en caso contrario.</value>
+        
+        private static int count = 0;
+        private string identific { get; set; }
+
+
+        public static int Count { get; private set; }
         public bool IsEngineStarted { get; private set; }
+
+
+        public Train(string Identific)
+        {
+            Train.count ++;
+            this.identific = Identific; 
+            Console.WriteLine($"Se esta construyendo el tren {count}");
+        }
+
+        ~Train()
+        {
+            Train.count--;
+            Console.WriteLine($"Se esta destruyendo el tren {count}");
+        } 
+        
 
         /// <summary>
         /// Enciende las máquinas del tren.
